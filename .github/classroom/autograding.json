@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "Inheritance Visitor Logs Unit Tests",
+      "setup": "",
+      "run": "./gradlew inheritance-visitorlogs-test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 11,
+      "points": null
+    },
+    {
+      "name": "Inheritance Flower Garden Unit Tests",
+      "setup": "",
+      "run": "./gradlew inheritance-flowergarden-test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    },
+    {
+      "name": "Groupwork Shopping Advisor Unit Tests",
+      "setup": "",
+      "run": "./gradlew groupwork-shoppingadvisor-test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
