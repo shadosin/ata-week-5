@@ -1,0 +1,52 @@
+plugins {
+    id 'ata-curriculum.snippets-conventions'
+    id 'ata-curriculum.integration-test-conventions'
+}
+
+checkstyle {
+    def suppressionFile = rootProject.file('Utilities/ATACheckstyle/configuration/checkstyle/unit1/suppressions.xml')
+    configProperties.put('checkstyle.suppression.filter', suppressionFile)
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+def wflowToTestsMap = [
+        'inheritance-flowergarden-test': [
+                'com.kenzie.inheritance.flowergarden.FlowerTest',
+                'com.kenzie.inheritance.flowergarden.GardenCategoryTest',
+                'com.kenzie.inheritance.flowergarden.Phase0Test',
+                'com.kenzie.inheritance.flowergarden.Phase1Test',
+                'com.kenzie.inheritance.flowergarden.Phase2Test',
+                'com.kenzie.inheritance.flowergarden.SymbolicFlowerTest',
+        ]
+]
+
+wflowToTestsMap.forEach { wflowName, testList ->
+    tasks.register(wflowName) {
+        dependsOn wflowtest
+        test.doFirst {
+            filter {
+                testList.each { includeTestsMatching it }
+            }
+        }
+    }
+}
+
+
+// def wflowToMainClassMap = [
+//         'comparable-userpagevisit-cli': 'com.kenzie.comparable.userpagevisit.UserPageVisitAggregator'
+// ]
+
+// wflowToMainClassMap.forEach { wflowName, mainClass ->
+//     tasks.register(wflowName) {
+//         runMain.mainClass.set(mainClass)
+//         dependsOn runMain
+//     }
+// }

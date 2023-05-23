@@ -1,0 +1,6 @@
+rootProject.name = 'ata-week-5'
+include ':Utilities'
+include ':GroupWork:ShoppingAdvisor'
+include ':Inheritance:FlowerGarden'
+include ':Inheritance:VisitorLogs'
+

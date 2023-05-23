@@ -1,0 +1,67 @@
+@startuml
+class ShoppingAdviserWidget {
+  - String title
+
+  + getAdvisedProducts() : List<ShoppingAdviserProduct>
+}
+
+class AmazonsChoiceAdviserWidget {
+  - AmazonsChoiceServiceClient amazonsChoiceServiceClient
+  - SearchServiceClient searchServiceClient
+  + getAdvisedProducts() : List<ShoppingAdviserProduct>
+}
+
+class ShoppingContext {
+  - SearchCategory searchCategory
+  - String marketplaceId
+  - String searchTerm
+}
+
+class ShoppingAdviserProduct {
+  - String adviceLabel
+  - Product product
+}
+
+class AmazonsChoiceServiceClient {
+  + getChoiceProduct(searchTerm : String, marketplaceId : String) : AmazonChoiceProduct
+}
+
+class AmazonChoiceProduct {
+  - String searchTerm
+  - Product product
+}
+
+class SearchServiceClient {
+  + getRelatedSearchTerms(searchTerm : String, searchCategory : SearchCategory) : List<String>
+}
+
+class EditorialServiceClient {
+  + getEditorialRecommendedProducts(searchTerm : String, searchCategory : SearchCategory, marketplaceId : String) : List<EditorialRecommendedProduct>
+}
+
+class EditorialRecommendedProduct {
+  - String recommendation
+  - Product product
+}
+
+enum SearchCategory {
+  BEAUTY, BOOKS, CLOTHING,
+  ELECTRONICS, HEALTH,
+  HOME_AND_GARDEN, PET_SUPPLIES, SPORTS, TOYS;
+}
+
+class ShoppingAdviserWidgetTestRenderer {
+  + main(String[] args)
+  + getRenderableContent(widget : AmazonsChoiceAdviserWidget) : String
+}
+
+ShoppingAdviserWidget *-- ShoppingContext
+ShoppingAdviserWidget <|-- AmazonsChoiceAdviserWidget
+AmazonsChoiceAdviserWidget *-- SearchServiceClient
+AmazonsChoiceAdviserWidget *-- AmazonsChoiceServiceClient
+ShoppingAdviserWidget -. ShoppingAdviserProduct: references
+EditorialServiceClient -. EditorialRecommendedProduct: references
+AmazonsChoiceServiceClient -. AmazonChoiceProduct: references
+ShoppingAdviserWidgetTestRenderer -. AmazonsChoiceAdviserWidget: references
+ShoppingContext *-- SearchCategory
+@enduml
