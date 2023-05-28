@@ -5,6 +5,7 @@ import com.kenzie.groupwork.shoppingadvisor.client.AmazonsChoiceServiceClient;
 import com.kenzie.groupwork.shoppingadvisor.model.ShoppingContext;
 import com.kenzie.groupwork.shoppingadvisor.resources.SearchCategory;
 import com.kenzie.groupwork.shoppingadvisor.widget.AmazonsChoiceAdviserWidget;
+import com.kenzie.groupwork.shoppingadvisor.widget.ShoppingAdviserWidget;
 
 public class ShoppingAdviserWidgetTestRenderer {
 
@@ -13,7 +14,7 @@ public class ShoppingAdviserWidgetTestRenderer {
      * @param widget the widget to render
      * @return A String containing the renderable content of a widget
      */
-    public String getRenderableContent(AmazonsChoiceAdviserWidget widget) {
+    public String getRenderableContent(ShoppingAdviserWidget widget) {
         return widget.getSimpleRendering();
     }
 
@@ -24,6 +25,8 @@ public class ShoppingAdviserWidgetTestRenderer {
         AmazonsChoiceAdviserWidget amazonsChoiceAdviserWidget = new AmazonsChoiceAdviserWidget(
             new ShoppingContext("grill", SearchCategory.HOME_AND_GARDEN, "ATVPDKIKX0DER"),
             new AmazonsChoiceServiceClient(), new AmazonSearchServiceClient());
+
+
 
         System.out.println(renderer.getRenderableContent(amazonsChoiceAdviserWidget));
     }

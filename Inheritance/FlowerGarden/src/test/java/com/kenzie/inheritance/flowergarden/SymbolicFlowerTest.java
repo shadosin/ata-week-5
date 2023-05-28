@@ -111,4 +111,5 @@ public class SymbolicFlowerTest {
         // THEN
         assertFalse(isEqual, "A SymbolicFlower should have its own unique hashCode.");
     }
+
 }

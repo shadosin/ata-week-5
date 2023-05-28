@@ -54,6 +54,8 @@ class ShoppingAdviserWidgetTestRenderer {
   + main(String[] args)
   + getRenderableContent(widget : AmazonsChoiceAdviserWidget) : String
 }
+class EditorialAdviserWidget{
+}
 
 ShoppingAdviserWidget *-- ShoppingContext
 ShoppingAdviserWidget <|-- AmazonsChoiceAdviserWidget
@@ -64,4 +66,6 @@ EditorialServiceClient -. EditorialRecommendedProduct: references
 AmazonsChoiceServiceClient -. AmazonChoiceProduct: references
 ShoppingAdviserWidgetTestRenderer -. AmazonsChoiceAdviserWidget: references
 ShoppingContext *-- SearchCategory
+ShoppingAdviserWidget <|-- EditorialAdviserWidget
+EditorialAdviserWidget *-- EditorialServiceClient
 @enduml

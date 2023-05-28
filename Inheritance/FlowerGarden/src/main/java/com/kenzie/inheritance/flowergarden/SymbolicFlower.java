@@ -1,5 +1,7 @@
 package com.kenzie.inheritance.flowergarden;
 
+import java.util.Objects;
+
 /**
  * Class representing a flower that has symbolic meaning.
  */
@@ -35,5 +37,18 @@ public class SymbolicFlower extends Flower {
     public String toString() {
         return String.format("SymbolicFlower: {Kind: %s, Coloration: %s, Planting: %s Significance: %s}",
             getKind(), getColoration(), getPlanting(), significance);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SymbolicFlower that)) return false;
+        if (!super.equals(o)) return false;
+        return getSignificance().equals(that.getSignificance());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getSignificance());
     }
 }

@@ -1,7 +1,6 @@
 package com.kenzie.inheritance.visitorlogs;
 
-import com.kenzie.inheritance.visitorlogs.model.InvalidVisit;
-import com.kenzie.inheritance.visitorlogs.model.Visit;
+import com.kenzie.inheritance.visitorlogs.model.*;
 
 /**
  * Produces all the various types of Visits.
@@ -18,17 +17,17 @@ public class VisitFactory {
         final Visit visit;
         if (visitorId.startsWith("ff")) {
             // TODO: Return a test visit
-            visit = new Visit();
+            visit = new TestVisit();
         } else if (visitorId.matches(".*a[0-9a-f]$")) {
             // TODO: Return an Amazon account visit
-            visit = new Visit();
+            visit = new AmazonAccountVisit();
         } else if (visitorId.matches(".*f[0-9a-f]$")) {
             // TODO: Return a Zappos account visit
             if (visitorId.startsWith("f0")) {
-                visit = new Visit();
+                visit = new ZapposAccountVisit();
             } else {
                 // TODO: Return an Amazon account visit
-                visit = new Visit();
+                visit = new AmazonAccountVisit();
             }
         } else if (visitorId.equals("000000000000")) {
             // The known ID for anonymous session visitors
